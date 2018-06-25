@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.MUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.MUser">
+        <id column="id" property="id" />
+        <result column="login_name" property="loginName" />
+        <result column="user_pass" property="userPass" />
+        <result column="user_name" property="userName" />
+        <result column="mobile" property="mobile" />
+        <result column="token" property="token" />
+        <result column="create_time" property="createTime" />
+        <result column="sex" property="sex" />
+        <result column="login_time" property="loginTime" />
+        <result column="last_login_time" property="lastLoginTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, login_name AS loginName, user_pass AS userPass, user_name AS userName, mobile, token, create_time AS createTime, sex, login_time AS loginTime, last_login_time AS lastLoginTime
+    </sql>
+
+</mapper>

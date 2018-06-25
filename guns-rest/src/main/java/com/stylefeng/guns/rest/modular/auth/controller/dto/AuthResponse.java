@@ -21,10 +21,14 @@ public class AuthResponse implements Serializable {
      * 用于客户端混淆md5加密
      */
     private final String randomKey;
-
-    public AuthResponse(String token, String randomKey) {
+    
+    private final String sign ;
+    private final String code ="000";
+    public AuthResponse(String token, String randomKey, String sign) {
         this.token = token;
         this.randomKey = randomKey;
+        
+        this.sign = sign;
     }
 
     public String getToken() {
@@ -34,4 +38,15 @@ public class AuthResponse implements Serializable {
     public String getRandomKey() {
         return randomKey;
     }
+
+	public String getSign() {
+		return sign;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	
+    
 }

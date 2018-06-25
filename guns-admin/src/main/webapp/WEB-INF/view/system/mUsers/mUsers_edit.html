@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="" value="${item.id}" underline="true"/>
+                            <#input id="loginName" name="" value="${item.loginName}" underline="true"/>
+                            <#input id="userPass" name="" value="${item.userPass}" underline="true"/>
+                            <#input id="userName" name="用户姓名" value="${item.userName}" underline="true"/>
+                            <#input id="mobile" name="" value="${item.mobile}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="token" name="" value="${item.token}" underline="true"/>
+                            <#input id="createTime" name="" value="${item.createTime}" underline="true"/>
+                            <#input id="sex" name="" value="${item.sex}" underline="true"/>
+                            <#input id="loginTime" name="登录时间" value="${item.loginTime}" underline="true"/>
+                            <#input id="lastLoginTime" name="上次登录时间" value="${item.lastLoginTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="MUsersInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="MUsersInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/mUsers/mUsers_info.js"></script>
+@}
