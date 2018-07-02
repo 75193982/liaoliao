@@ -12,12 +12,11 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.stylefeng.guns.core.exception.GunsException;
 import com.stylefeng.guns.rest.common.exception.BizExceptionEnum;
 import com.stylefeng.guns.rest.liaoliao.service.IUserAuthService;
-import com.stylefeng.guns.rest.model.MUsers;
 import com.stylefeng.guns.rest.model.UserAuth;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthRequest;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthResponse;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
-import com.stylefeng.guns.rest.modular.auth.util.SigatureUtil;
+import com.stylefeng.guns.rest.modular.auth.util.RongUtils;
 import com.stylefeng.guns.rest.modular.auth.validator.IReqValidator;
 
 /**
@@ -49,7 +48,7 @@ public class AuthController {
         	 if (validate) {
                  final String randomKey = jwtTokenUtil.getRandomKey();
                  final String token = jwtTokenUtil.generateToken(authRequest.getUserName(), randomKey);
-                 String sign = SigatureUtil.getSign(userName);
+                 String sign = RongUtils.getToken(userName);
                  return ResponseEntity.ok(new AuthResponse(token, randomKey,sign));
              } else {
                  throw new GunsException(BizExceptionEnum.AUTH_REQUEST_ERROR);
@@ -69,7 +68,7 @@ public class AuthController {
         		userAuth.setUserId(authRequest.getUserId());
         		userAuthService.insert(userAuth);
         	}
-        	 String sign = SigatureUtil.getSign(authRequest.getUserId());
+        	 String sign = RongUtils.getToken(authRequest.getUserId());
         	 final String randomKey = jwtTokenUtil.getRandomKey();
         	 final String token = jwtTokenUtil.generateToken(authRequest.getToken(), randomKey);
              return ResponseEntity.ok(new AuthResponse(token, randomKey,sign));
